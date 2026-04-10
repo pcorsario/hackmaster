@@ -1,6 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 interface Props {
 	eyebrow?: string;
 	title?: string;
@@ -8,23 +6,16 @@ interface Props {
 
 const { eyebrow, title } = Astro.props as Props;
 
-
-const mytools = [
-  'ESPE', 'Framer', 'Webflow', 'Notion', 'Lottie', 'Canva', 'Sketch', 'Shopify', 'Photoshop', 'Miro'
-]
-
-const iconMap: Record<string, string> = {
-  figma: 'tabler:brand-figma',
-  framer: 'tabler:brand-framer',
-  webflow: 'tabler:brand-webflow',
-  notion: 'tabler:brand-notion',
-  lottie: 'tabler:movie',
-  canva: 'tabler:palette',
-  sketch: 'tabler:brand-sketch',
-  shopify: 'tabler:shopping-cart',
-  photoshop: 'tabler:brand-adobe-photoshop',
-  miro: 'tabler:layout-grid'
-}
+const logos = [
+  { name: 'EPN', src: '/logosU/epn.png' },
+  { name: 'ESPE', src: '/logosU/espe.png' },
+  { name: 'ESPOL', src: '/logosU/espol.png' },
+  { name: 'U. Central', src: '/logosU/uce.png' },
+  { name: 'ULEAM', src: '/logosU/uelam.png' },
+  { name: 'UNACH', src: '/logosU/unach.png' },
+  { name: 'UNAE', src: '/logosU/unae.png' },
+  { name: 'UTM', src: '/logosU/utm.png' }
+];
 --- 
 
 <script>
@@ -40,25 +31,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const tl = gsap.timeline({ repeat: -1 });
     tl.to(clonedContainer, {
-        x: -(clonedContainer.scrollWidth / 2),  duration: 30, ease: 'none'
+        x: -(clonedContainer.scrollWidth / 2),  duration: 40, ease: 'none'
     })
 });
 </script>
   
-<section>
-  {eyebrow && <p class="text-[0.65rem] font-semibold uppercase text-subtle m-0">{eyebrow}</p>} 
-	{title && <h2 class="text-3xl sm:text-4xl font-semibold leading-tight text-ink m-0">{title}</h2>} 
-    <div class="overflow-hidden">
-        <div class="flex items-center gap-10 md:gap-30" id="cloned">
-            {mytools.map(item => {
-              const iconName = iconMap[item.toLowerCase()] ?? 'tabler:star';
-              return (
-                <div class="text-ink flex-1 text-2xl whitespace-nowrap flex items-center gap-3">
-                  <Icon name={iconName} size={24} stroke-width={1.6} />
-                  <span>{item}</span>
+<section class="py-8">
+  {eyebrow && <p class="text-[0.65rem] font-semibold uppercase text-subtle m-0 text-center">{eyebrow}</p>} 
+	{title && <h2 class="text-3xl sm:text-4xl font-semibold leading-tight text-ink m-0 text-center mb-10">{title}</h2>} 
+    <div class="overflow-hidden relative w-full pt-4">
+        <!-- Optional gradient overlays for smooth fading at the edges -->
+        <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10 pointers-events-none" style="background: linear-gradient(to right, var(--color-paper), transparent);"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10 pointers-events-none" style="background: linear-gradient(to left, var(--color-paper), transparent);"></div>
+        
+        <div class="flex items-center gap-12 md:gap-24" id="cloned">
+            {logos.map(logo => (
+                <div class="flex-shrink-0 flex items-center justify-center filter mix-blend-multiply opacity-80 hover:opacity-100 transition-all duration-300 mx-4">
+                  <img src={logo.src} alt={`Logo de ${logo.name}`} class="h-[60px] md:h-[85px] w-auto object-contain" />
                 </div>
-              )
-            })}
+            ))}
         </div>
     </div>
 </section>

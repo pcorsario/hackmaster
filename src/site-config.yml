@@ -1,6 +1,6 @@
 site:
   title: "Hackmaster"
   description: "Prepárate para el ingreso a la Universidad"
-  based: "Mexico City"
-  timezone: "America/Mexico_City"
-  locale: "es-MX"
+  based: "Ecuador"
+  timezone: "America/Guayaquil"
+  locale: "es-EC" 

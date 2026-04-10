@@ -33,19 +33,23 @@ if (!testimonials) {
     {title && <h2 class="text-3xl sm:text-4xl font-semibold leading-tight text-ink m-0">{title}</h2>}
   </header>
 
-  <div class="slider w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[220px] md:min-h-[260px]">
+  <div class="slider w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[440px] md:min-h-[380px]">
     {items.map((t, i) => (
-      <article class="slide absolute inset-0 flex items-center justify-center px-2" data-index={i}>
-        <div class="w-full max-w-[720px] rounded-2xl border border-border bg-surface px-6 py-5 shadow-sm relative">
-          <Icon name="tabler:quote" size={28} class="text-border absolute top-4 right-5 opacity-60" />
-          <blockquote class="not-italic text-base md:text-lg leading-relaxed mb-4 text-ink m-0">{t.quote}</blockquote>
-          <div class="flex items-center gap-3">
-            {t.avatar && <img src={t.avatar} alt={`Avatar de ${t.author}`} class="w-10 h-10 rounded-full object-cover ring-2 ring-border" />}
+      <article class="slide absolute inset-0 flex items-center justify-center px-4" data-index={i}>
+        <div class="w-full max-w-[850px] rounded-3xl border border-border bg-surface p-6 md:p-8 shadow-sm relative flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
+          <Icon name="tabler:quote" size={48} class="text-border absolute top-6 right-8 opacity-30 z-0" />
+          <div class="flex-1 relative z-10 w-full text-left">
+            <blockquote class="not-italic text-lg md:text-xl leading-relaxed mb-6 text-ink m-0">"{t.quote}"</blockquote>
             <div>
-              <p class="text-sm font-semibold text-ink m-0">{t.author}</p>
-              {t.role && <p class="text-xs text-muted m-0">{t.role}</p>}
+              <p class="text-lg font-bold text-ink m-0">{t.author}</p>
+              {t.role && <p class="text-sm font-semibold text-muted m-0 mt-1" style="color: #b91c1c;">{t.role}</p>}
             </div>
           </div>
+          {t.avatar && (
+            <div class="flex-shrink-0 w-40 h-40 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg border-4 border-[color-mix(in_oklab,currentColor_15%,transparent)] md:rotate-2 hover:rotate-0 transition-transform duration-300 relative z-10">
+              <img src={t.avatar} alt={`Foto de ${t.author}`} class="w-full h-full object-cover" />
+            </div>
+          )}
         </div>
       </article>
     ))}

@@ -26,7 +26,7 @@ const { eyebrow, title, description, image, actions = [] } = Astro.props;
 			{actions.length > 0 && (
 				<div class="flex flex-wrap gap-3 mt-3">
 					{actions.map((action) => (
-						<a class="button primary" href={withBase(action.href)}>
+						<a class="button primary" style="background: #50B7F3; color: #faf9fa; background-image: none;"   href={withBase(action.href)}>
 							{action.label}
 						</a>
 					))}
@@ -35,7 +35,7 @@ const { eyebrow, title, description, image, actions = [] } = Astro.props;
 		</div>
 		{image && (
 			<div class="relative w-full flex justify-center md:justify-end animate-fade-in">
-				<img src={image} alt={title} class="max-w-full h-auto object-contain max-h-[500px] border-4 border-[#4C048C] rounded-3xl drop-shadow-2xl hover:-translate-y-2 transition-transform duration-500" />
+				<img src={image} alt={title} class="max-w-full h-auto object-contain max-h-[500px] border-1 border-[#4C048C] rounded-3xl drop-shadow-2xl hover:-translate-y-2 transition-transform duration-500" />
 			</div>
 		)}
 	</div>

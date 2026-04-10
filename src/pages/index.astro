@@ -19,47 +19,75 @@ const site = await getSite();
 		description="En Hack Master Preuniversitario te preparamos para aprobar tu examen de admisión con simuladores y acompañamiento durante todo el proceso."
 		image="/heroBanner.png"
 		actions={[
-			{ label: 'View Blog', href: '/blog' },
-			{ label: 'Get Quote', href: '/contact' },
+			{ label: 'Aula Virtual', href: 'https://lms.hackmaster.ec/' },
+			{ label: 'Blog', href: '/blog' },
+			{ label: 'Contacto', href: '/contact' },
 		]}
 	/>
-
 	<Sponsors
+
 	/>
 
 	<Numbers
-		eyebrow="Results"
-		title="We deliver consistently"
-		copy="A design-and-code stack ready to ship products without trading off quality."
+		eyebrow="RESULTADOS"
+		title="Con la confianza de más de 2500 estudiantes satisfechos. "
+		copy="En todos estos años en beneficio de nuestros estudiantes. "
 		stats={[
-			{ label: 'Projects shipped', value: '48', description: 'From discovery to ship without drama.' },
-			{ label: 'Average lead time', value: '6 weeks', description: 'Small teams, short cycles.' },
-			{ label: 'Client NPS', value: '72', description: 'Long-term relationships.' },
-			{ label: 'Response time', value: '<24h', description: 'Slack, email, or call.' },
+			{ label: 'Cursos', value: '36', description: 'Hechos para ti, con sus simuladores de Examen.' },
+			{ label: 'Promedio de Ingreso', value: '99%', description: 'De nuestros estudiantes logran ingresar a la universidad.' },
+			{ label: 'Programas deAcompañamiento', value: '+10', description: 'Acompañamiento personalizado.' },
+			{ label: 'Atención Personalizada', value: '24/7', description: 'Estamos para ayudarte en todo momento.' },
 		]}
 	/>
 
 	<Values
-		eyebrow="Values"
-		title="How we show up"
-		copy="Principles we keep front-and-center so every project ships with the same intent and craft."
+		eyebrow="¡En Hackmaster, te ofrecemos un paquete completo para asegurar tu ingreso a la universidad!"
+		title="¡TU CAPACITACIÓN HACKMASTER INCLUYE!"
 		values={[
-			{ title: 'Clarity over noise', description: 'We write, design, and code to be understood quickly by teams and customers.' },
-			{ title: 'Bias for shipping', description: 'We prefer small, validated releases over long bets that never reach users.' },
-			{ title: 'Craft with pragmatism', description: 'Quality matters most when it serves the outcome—polish meets purpose.' },
-			{ title: 'Partnership mindset', description: 'We behave like embedded teammates, not vendors: transparent, responsive, reliable.' },
+			{ title: 'Preparación Constante y Segura', description: 'Sabemos que las normativas pueden cambiar, pero tu camino a la universidad no. En Hackmaster te brindamos la estabilidad necesaria para que sigas aprendiendo sin interrupciones.', icon: 'tabler:shield-check' },
+			{ title: 'Orientación Vocacional Profesional', description: 'Nuestros especialistas te guiarán para descubrir tus habilidades y afinidades, ayudándote a tomar la mejor decisión para tu futuro universitario.', icon: 'tabler:users' },
+			{ title: 'Acompañamiento hasta el Examen', description: 'En Hackmaster te respaldamos estudiando contigo hasta el día de tu examen de admisión, garantizando que tu conocimiento esté siempre fresco.', icon: 'tabler:calendar-event' },
+			{ title: 'Recursos y Simuladores Exclusivos', description: 'Tendrás a tu disposición folletos, guías didácticas y una plataforma de simuladores de exámenes reales, todo diseñado para facilitar tu aprendizaje.', icon: 'tabler:book' },
+			{ title: 'Práctica con Exámenes Reales', description: 'Pon a prueba tus conocimientos con bancos de preguntas extraídos directamente de procesos de admisión de años anteriores.', icon: 'tabler:pencil' },
+			{ title: 'Docentes de Alta Calidad', description: 'Fórmate con verdaderos profesionales, especialistas con estudios de tercer y cuarto nivel comprometidos con llevarte al éxito.', icon: 'tabler:award' },
 		]}
 	/>
 
 	<PostList
 		heading="Blog"
-		limit={3}
+		limit={4}
 		viewAllHref="/blog"
 	/>
 		
 	<Testimonials
-		eyebrow="Testimonials"
-		title="What our clients say"
+		eyebrow="Testimonios"
+		title="Lo que nuestros estudiantes dicen"
+		testimonials={[
+			{
+				quote: "¡Nunca pensé que alcanzaría los 950 puntos en el examen de admisión! Gracias a los simuladores idénticos a las pruebas reales y la asesoría de Hackmaster, logré ingresar a la Escuela Politécnica Nacional en mi primer intento.",
+				author: "Daniela Cortez",
+				role: "Aceptada en la EPN",
+				avatar: "/testimonios/daniela.webp"
+			},
+			{
+				quote: "El nivel académico de Hackmaster es otra cosa. Con sus clases avanzadas y evaluaciones pude obtener 930 puntos, asegurando de inmediato mi cupo para la carrera de Medicina en la Universidad Central del Ecuador.",
+				author: "Mateo Zambrano",
+				role: "Estudiante de Medicina, UCE",
+				avatar: "/testimonios/mateo.jpg"
+			},
+			{
+				quote: "La metodología de estudio y el apoyo de los profesores me motivaron desde el día uno. Superé los 900 puntos y gracias a ello fui admitida en la Universidad de Cuenca. ¡Excelente preparación!",
+				author: "Sofía Arévalo",
+				role: "Aceptada en la U. de Cuenca",
+				avatar: "/testimonios/sofia.png"
+			},
+			{
+				quote: "Pensé que el proceso de ingreso a la universidad sería mi mayor obstáculo, pero obtener más de 960 puntos fue una realidad gracias a todo su material didáctico y acompañamiento hasta el último momento.",
+				author: "Kevin Torres",
+				role: "Aceptado en la ESPOCH",
+				avatar: "/testimonios/kevin.jpg"
+			}
+		]}
 	/>
 
 </PageLayout>
