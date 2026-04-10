@@ -76,3 +76,4 @@ heroImage: ../../assets/blog/ship.jpg
 
 ## Deploy
 Output is static HTML. Upload `dist/` to your platform of choice (Netlify, Vercel, Cloudflare Pages, S3+CDN). Set `BASE_URL` if you publish under a subpath.
+# hackmaster

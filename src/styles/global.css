@@ -8,9 +8,9 @@
 	--grid-cell: calc(100vw / var(--grid-divisions));
 	--content-width: calc(var(--grid-cell) * var(--content-columns));
 	
-	--color-ink: #050505;
+	--color-ink: #1e0a3c;
 	--color-muted: color-mix(in oklab, var(--color-ink) 75%, transparent);
-	--color-paper: #f9f9f9;
+	--color-paper: #fcfaff;
 	--color-surface: #ffffff;
 	--color-border: color-mix(in oklab, var(--color-ink) 14%, transparent);
 }
@@ -18,9 +18,9 @@
 @layer base {
 	:root[data-theme="light"] {
 		color-scheme: light;
-		--color-ink: #050505;
+		--color-ink: #1e0a3c;
 		--color-muted: color-mix(in oklab, var(--color-ink) 75%, transparent);
-		--color-paper: #f9f9f9;
+		--color-paper: #fcfaff;
 		--color-surface: #ffffff;
 		--color-border: color-mix(in oklab, var(--color-ink) 14%, transparent);
 		--grid-line: color-mix(in oklab, var(--color-ink) 10%, transparent);
@@ -28,10 +28,10 @@
 
 	:root[data-theme="dark"] {
 		color-scheme: dark;
-		--color-ink: #f5f5f5;
+		--color-ink: #f0e6ff;
 		--color-muted: color-mix(in oklab, var(--color-ink) 75%, transparent);
-		--color-paper: #0d0d10;
-		--color-surface: #131318;
+		--color-paper: #0b0515;
+		--color-surface: #120921;
 		--color-border: color-mix(in oklab, var(--color-ink) 16%, transparent);
 		--grid-line: color-mix(in oklab, var(--color-ink) 10%, transparent);
 	}
@@ -158,14 +158,14 @@
 	}
 
 	.header-button:hover {
-		border-color: color-mix(in oklab, var(--color-ink, #111) 32%, transparent);
-		background: color-mix(in oklab, var(--color-surface, #fff) 85%, var(--color-ink, #111) 5%);
+		border-color: color-mix(in oklab, var(--color-ink, #2d1155) 32%, transparent);
+		background: color-mix(in oklab, var(--color-surface, #fff) 85%, var(--color-ink, #2d1155) 5%);
 		transform: translateY(-1px);
 	}
 
 	.header-button[aria-pressed='true'] {
-		border-color: color-mix(in oklab, var(--color-ink, #111) 38%, transparent);
-		background: color-mix(in oklab, var(--color-ink, #111) 8%, var(--color-surface, #fff) 88%);
+		border-color: color-mix(in oklab, var(--color-ink, #2d1155) 38%, transparent);
+		background: color-mix(in oklab, var(--color-ink, #2d1155) 8%, var(--color-surface, #fff) 88%);
 	}
 
 	.header-button .theme-toggle__icon,
@@ -198,6 +198,11 @@
 		font-size: clamp(2.25rem, 4vw, 3.25rem);
 		line-height: 1.1;
 		margin: 0;
+		background: linear-gradient(135deg, var(--color-ink) 20%, color-mix(in oklab, var(--color-ink) 50%, #9020ff));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		color: transparent;
 	}
 
 	.hero p {
@@ -238,9 +243,11 @@
 	}
 
 	.button.primary {
-		background: var(--color-ink);
+		background: linear-gradient(135deg, var(--color-ink), color-mix(in oklab, var(--color-ink) 60%, #6b21a8));
+		background-size: 200% 200%;
 		color: var(--color-surface);
-		border-color: var(--color-ink);
+		border-color: transparent;
+		transition: all 400ms ease;
 	}
 
 	.button.secondary {
@@ -251,6 +258,12 @@
 	.button:hover {
 		transform: translateY(-1px);
 		border-color: color-mix(in oklab, var(--color-ink) 28%, transparent);
+	}
+	
+	.button.primary:hover {
+		background-position: right bottom;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px color-mix(in oklab, var(--color-ink) 25%, transparent);
 	}
 
 	.card,
@@ -285,6 +298,11 @@
 		margin: 0;
 		font-size: clamp(2.2rem, 3.6vw, 2.8rem);
 		line-height: 1.1;
+		background: linear-gradient(135deg, var(--color-ink) 20%, color-mix(in oklab, var(--color-ink) 50%, #9020ff));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		color: transparent;
 	}
 
 	.post-page {

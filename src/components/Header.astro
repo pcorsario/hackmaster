@@ -9,10 +9,8 @@ import { Icon } from "astro-icon/components";
 const subpath = import.meta.env.BASE_URL;
 ---
 
-<header class="fixed w-full z-30 flex items-center ">
-  <div
-    class="content-shell w-full h-full"
-  >
+<header class="fixed w-full z-30 flex items-center">
+  <div class="content-shell w-full h-full">
     <div
       class="grid h-full grid-cols-[1fr_auto] grid-rows-[auto_auto] items-center md:grid-cols-[auto_1fr_auto] md:grid-rows-1"
     >
@@ -20,24 +18,36 @@ const subpath = import.meta.env.BASE_URL;
         <h1
           class="text-base font-semibold uppercase m-0 [html[data-nav='open']_&]:text-center"
         >
-          <a href={subpath} aria-label={site.title}>
+          <!-- <a href={subpath} aria-label={site.title} class="flex items-center">
             <Icon
               name="tabler:rocket"
               size="2em"
-              class="inline-block mr-3 align-middle"
+              class="mr-2"
               aria-hidden="true"
+            />
+            <span class="hidden md:inline">{site.title}</span>
+          </a> -->
+          <a href={subpath} aria-label={site.title}>
+            <img
+              src="/logohm1.png"
+              alt="Logo"
+              class="h-20 w-auto inline-block mr-3 align-middle"
             />
             <span class="hidden md:inline">{site.title}</span>
           </a>
         </h1>
+        <!-- <span class="hidden md:block text-[0.55rem] uppercase tracking-widest text-[#9020ff] -mt-[0.25rem] ml-[2.5rem]">
+          Más que un preuniversitario
+        </span> -->
       </div>
       <nav
         class="hidden md:flex items-center gap-2 md:gap-3 overflow-x-auto overflow-y-visible pt-1 pb-0.5 text-[0.72rem] tracking-[0.24em] uppercase text-muted [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [--tw-pan-y:none] [&::-webkit-scrollbar]:hidden col-span-2 md:col-auto md:justify-self-center [html[data-nav='open']_&]:flex [html[data-nav='open']_&]:flex-col [html[data-nav='open']_&]:items-start [html[data-nav='open']_&]:gap-2 [html[data-nav='open']_&]:py-4 [html[data-nav='open']_&]:w-full [html[data-nav='open']_&]:col-span-2 [html[data-nav='open']_&]:justify-self-stretch"
       >
+        <HeaderLink href="/">Inicio</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/team">Team</HeaderLink>
-        <HeaderLink href="/about">About</HeaderLink>
-        <HeaderLink href="/projects">Projects</HeaderLink>
+        <HeaderLink href="/team">Equipo</HeaderLink>
+        <HeaderLink href="/about">Sobre Nosotros</HeaderLink>
+        <HeaderLink href="/projects">Proyectos</HeaderLink>
       </nav>
       <div class="flex items-center gap-2 md:gap-3 shrink-0 justify-end">
         <button
@@ -156,27 +166,26 @@ const subpath = import.meta.env.BASE_URL;
 </script>
 
 <style>
-
   @reference "tailwindcss";
 
   header {
-		min-height: calc(var(--grid-cell) * 1);
-		background: color-mix(in oklab, var(--color-surface) 80%, transparent);
-		-webkit-backdrop-filter: blur(14px);
-		backdrop-filter: blur(14px);
+    min-height: calc(var(--grid-cell) * 1);
+    background: color-mix(in oklab, var(--color-surface) 80%, transparent);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
   }
 
   /* Make header taller on small screens (2 grid cells) */
   @media (max-width: 720px) {
-	  header {
-		min-height: calc(var(--grid-cell) * 4);
-	  }
+    header {
+      min-height: calc(var(--grid-cell) * 4);
+    }
 
-	  /* Ensure vertical padding on the content shell when mobile nav is open */
-	  html[data-nav='open'] .content-shell {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-	  }
+    /* Ensure vertical padding on the content shell when mobile nav is open */
+    html[data-nav="open"] .content-shell {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
   }
 
   /* header-button styles moved to `src/styles/global.css` so they apply across components */

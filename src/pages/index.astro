@@ -14,9 +14,10 @@ const site = await getSite();
 	title={site.title}
 >
 	<Hero
-		eyebrow="An Astro Blueprint"
-		title="A modern Astro scaffolding for agencies and studios."
-		description="Kickstart your next project with a solid foundation, featuring a blog, project showcases, and dark mode support."
+		eyebrow="Bienvenido a Hackmaster"
+		title={site.description || "Prepárate para la Universidad"}
+		description="En Hack Master Preuniversitario te preparamos para aprobar tu examen de admisión con simuladores y acompañamiento durante todo el proceso."
+		image="/heroBanner.png"
 		actions={[
 			{ label: 'View Blog', href: '/blog' },
 			{ label: 'Get Quote', href: '/contact' },

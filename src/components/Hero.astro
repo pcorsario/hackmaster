@@ -8,39 +8,35 @@ interface Props {
 	eyebrow?: string;
 	title: string;
 	description?: string;
+	image?: string;
 	actions?: Action[];
 }
 
 import { withBase } from '../utils/slugify';
 
-const { eyebrow, title, description, actions = [] } = Astro.props;
+const { eyebrow, title, description, image, actions = [] } = Astro.props;
 ---
 
-<section class="content-shell flex items-center">
-	<div class="grid gap-4 max-w-3xl">
-		{eyebrow && <p class="eyebrow">{eyebrow}</p>}
-		<h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight m-0">{title}</h1>
-		{description && <p class="text-muted text-base md:text-lg max-w-2xl m-0">{description}</p>}
-		{actions.length > 0 && (
-			<div class="flex flex-wrap gap-3 mt-3">
-				{actions.map((action) => (
-					<a class="button primary" href={withBase(action.href)}>
-						{action.label}
-					</a>
-				))}
+<section class="content-shell flex items-center justify-between pt-24 pb-0 md:pt-28 md:pb-4">
+	<div class="grid md:grid-cols-2 gap-12 items-center w-full">
+		<div class="grid gap-4 max-w-3xl">
+			{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+			<h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight m-0">{title}</h1>
+			{description && <p class="text-muted text-base md:text-lg max-w-2xl m-0">{description}</p>}
+			{actions.length > 0 && (
+				<div class="flex flex-wrap gap-3 mt-3">
+					{actions.map((action) => (
+						<a class="button primary" href={withBase(action.href)}>
+							{action.label}
+						</a>
+					))}
+				</div>
+			)}
+		</div>
+		{image && (
+			<div class="relative w-full flex justify-center md:justify-end animate-fade-in">
+				<img src={image} alt={title} class="max-w-full h-auto object-contain max-h-[500px] border-4 border-[#4C048C] rounded-3xl drop-shadow-2xl hover:-translate-y-2 transition-transform duration-500" />
 			</div>
 		)}
 	</div>
 </section>
-
-<style>
-	.content-shell {
-		min-height: calc(100vh - calc(var(--grid-cell) * 1));
-	}
-
-	@media (max-width: 720px) {
-		.content-shell {
-			min-height: calc(100vh - calc(var(--grid-cell) * 4));
-		}
-	}
-</style>
