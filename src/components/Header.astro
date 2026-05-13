@@ -45,9 +45,9 @@ const subpath = import.meta.env.BASE_URL;
       >
         <HeaderLink href="/">Inicio</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/team">Equipo</HeaderLink>
-        <HeaderLink href="/about">Sobre Nosotros</HeaderLink>
-        <HeaderLink href="/projects">Proyectos</HeaderLink>
+        <HeaderLink href="#">Equipo</HeaderLink>
+        <HeaderLink href="#">Sobre Nosotros</HeaderLink>
+        <HeaderLink href="#">Proyectos</HeaderLink>
       </nav>
       <div class="flex items-center gap-2 md:gap-3 shrink-0 justify-end">
         <button
@@ -72,7 +72,7 @@ const subpath = import.meta.env.BASE_URL;
           <span class="sr-only">Toggle navigation</span>
         </button>
         <SearchModal />
-        <a
+        <!-- <a
           class="header-button"
           href="https://github.com/roicort/launchpad"
           target="_blank"
@@ -80,8 +80,8 @@ const subpath = import.meta.env.BASE_URL;
           aria-label="Visit the GitHub repository"
         >
           <Icon name="tabler:brand-github" size={18} stroke-width={1.6} />
-        </a>
-        <button
+        </a> -->
+        <!-- <button
           class="header-button"
           type="button"
           id="debug-toggle"
@@ -89,7 +89,7 @@ const subpath = import.meta.env.BASE_URL;
           aria-pressed="false"
         >
           <Icon name="tabler:bug" size={18} stroke-width={1.6} />
-        </button>
+        </button> -->
         <ThemeToggle />
       </div>
     </div>

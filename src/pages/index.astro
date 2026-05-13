@@ -1,42 +1,58 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/Hero.astro';
-import PostList from '../components/PostList.astro';
-import Numbers from '../components/Numbers.astro';
-import Values from '../components/Values.astro';
-import Sponsors from '../components/Sponsors.astro';
-import Testimonials from '../components/Testimonials.astro';
-import { getSite } from '../utils/consts';
+import PageLayout from "../layouts/PageLayout.astro";
+import Hero from "../components/Hero.astro";
+import PostList from "../components/PostList.astro";
+import Numbers from "../components/Numbers.astro";
+import Values from "../components/Values.astro";
+import Sponsors from "../components/Sponsors.astro";
+import Testimonials from "../components/Testimonials.astro";
+import { getSite } from "../utils/consts";
 const site = await getSite();
 ---
 
-<PageLayout
-	title={site.title}
->
+<PageLayout title={site.title}>
 	<Hero
 		eyebrow="Bienvenido a Hackmaster"
 		title={site.description || "Prepárate para la Universidad"}
-		description="En Hack Master Preuniversitario te preparamos para aprobar tu examen de admisión con simuladores y acompañamiento durante todo el proceso."
+		description="En Hack Master Preuniversitario te brindamos un acompañamiento continuo antes, durante y después de cada etapa del proceso de admisión, asegurando que tomes decisiones correctas y aumentes tus posibilidades de obtener un cupo."
 		image="/heroBanner.png"
 		actions={[
-			{ label: 'Aula Virtual', href: 'https://lms.hackmaster.ec/' },
-			{ label: 'Blog', href: '/blog' },
-			{ label: 'Contacto', href: '/contact' },
+			{ label: "Aula Virtual", href: "https://lms.hackmaster.ec/" },
+			{ label: "Blog", href: "/blog" },
+			{ label: "Contacto", href: "/contact" },
 		]}
 	/>
-	<Sponsors
-
-	/>
+	<Sponsors />
 
 	<Numbers
 		eyebrow="RESULTADOS"
-		title="Con la confianza de más de 2500 estudiantes satisfechos. "
+		title="Con la confianza de más de 1000 estudiantes satisfechos. "
 		copy="En todos estos años en beneficio de nuestros estudiantes. "
 		stats={[
-			{ label: 'Cursos', value: '36', description: 'Hechos para ti, con sus simuladores de Examen.' },
-			{ label: 'Promedio de Ingreso', value: '99%', description: 'De nuestros estudiantes logran ingresar a la universidad.' },
-			{ label: 'Programas deAcompañamiento', value: '+10', description: 'Acompañamiento personalizado.' },
-			{ label: 'Atención Personalizada', value: '24/7', description: 'Estamos para ayudarte en todo momento.' },
+			{
+				label: "Cursos",
+				value: "36",
+				description:
+					"Activos en Moodle por materia y universidad. Contamos con simuladores basados en preguntas reales de exámenes anteriores, lo que permite una preparación más efectiva y alineada a cada institución.",
+			},
+			{
+				label: "Promedio de Ingreso",
+				value: "97%",
+				description:
+					"Nuestros estudiantes logran ingresar a la universidad gracias a una preparación estratégica enfocada en los temas evaluados en cada proceso.",
+			},
+			{
+				label: "Programas deAcompañamiento",
+				value: "+10",
+				description:
+					"Ofrecemos seguimiento personalizado en cada etapa del proceso: desde el registro hasta la aceptación del cupo.",
+			},
+			{
+				label: "GARANTÍA DE INGRESO",
+				value: "100%",
+				description:
+					"En Hack Master, te ofrecemos un paquete completo para asegurar tu ingreso a la universidad. Si cumples con todo el proceso de preparación y no obtienes un cupo, continúas con nosotros en el siguiente proceso sin costo adicional.",
+			},
 		]}
 	/>
 
@@ -44,21 +60,47 @@ const site = await getSite();
 		eyebrow="¡En Hackmaster, te ofrecemos un paquete completo para asegurar tu ingreso a la universidad!"
 		title="¡TU CAPACITACIÓN HACKMASTER INCLUYE!"
 		values={[
-			{ title: 'Preparación Constante y Segura', description: 'Sabemos que las normativas pueden cambiar, pero tu camino a la universidad no. En Hackmaster te brindamos la estabilidad necesaria para que sigas aprendiendo sin interrupciones.', icon: 'tabler:shield-check' },
-			{ title: 'Orientación Vocacional Profesional', description: 'Nuestros especialistas te guiarán para descubrir tus habilidades y afinidades, ayudándote a tomar la mejor decisión para tu futuro universitario.', icon: 'tabler:users' },
-			{ title: 'Acompañamiento hasta el Examen', description: 'En Hackmaster te respaldamos estudiando contigo hasta el día de tu examen de admisión, garantizando que tu conocimiento esté siempre fresco.', icon: 'tabler:calendar-event' },
-			{ title: 'Recursos y Simuladores Exclusivos', description: 'Tendrás a tu disposición folletos, guías didácticas y una plataforma de simuladores de exámenes reales, todo diseñado para facilitar tu aprendizaje.', icon: 'tabler:book' },
-			{ title: 'Práctica con Exámenes Reales', description: 'Pon a prueba tus conocimientos con bancos de preguntas extraídos directamente de procesos de admisión de años anteriores.', icon: 'tabler:pencil' },
-			{ title: 'Docentes de Alta Calidad', description: 'Fórmate con verdaderos profesionales, especialistas con estudios de tercer y cuarto nivel comprometidos con llevarte al éxito.', icon: 'tabler:award' },
+			{
+				title: "Preparación académica enfocada en exámenes de admisión.",
+				description:
+					"Sabemos que las normativas pueden cambiar, pero tu camino a la universidad no. En Hackmaster te brindamos la estabilidad necesaria para que sigas aprendiendo sin interrupciones.",
+				icon: "tabler:shield-check",
+			},
+			{
+				title: "Orientación vocacional profesional para elegir correctamente tu carrera.",
+				description:
+					"Nuestros especialistas te guiarán para descubrir tus habilidades y afinidades, ayudándote a tomar la mejor decisión para tu futuro universitario.",
+				icon: "tabler:users",
+			},
+			{
+				title: "Acompañamiento durante todo el proceso de ingreso.",
+				description:
+					"En Hackmaster te respaldamos estudiando contigo hasta el día de tu examen de admisión, garantizando que tu conocimiento esté siempre fresco.",
+				icon: "tabler:calendar-event",
+			},
+			{
+				title: "Acceso a recursos digitales y simuladores prácticos.",
+				description:
+					"Tendrás a tu disposición folletos, guías didácticas y una plataforma de simuladores de exámenes reales, todo diseñado para facilitar tu aprendizaje.",
+				icon: "tabler:book",
+			},
+			{
+				title: "Guía académica personalizada según tu objetivo.",
+				description:
+					"Pon a prueba tus conocimientos con bancos de preguntas extraídos directamente de procesos de admisión de años anteriores.",
+				icon: "tabler:pencil",
+			},
+			{
+				title: "Docentes altamente capacitados y con experiencia.",
+				description:
+					"Fórmate con verdaderos profesionales, especialistas con estudios de tercer y cuarto nivel comprometidos con llevarte al éxito.",
+				icon: "tabler:award",
+			},
 		]}
 	/>
 
-	<PostList
-		heading="Blog"
-		limit={4}
-		viewAllHref="/blog"
-	/>
-		
+	<PostList heading="Blog" limit={4} viewAllHref="/blog" />
+
 	<Testimonials
 		eyebrow="Testimonios"
 		title="Lo que nuestros estudiantes dicen"
@@ -67,27 +109,26 @@ const site = await getSite();
 				quote: "¡Nunca pensé que alcanzaría los 950 puntos en el examen de admisión! Gracias a los simuladores idénticos a las pruebas reales y la asesoría de Hackmaster, logré ingresar a la Escuela Politécnica Nacional en mi primer intento.",
 				author: "Daniela Cortez",
 				role: "Aceptada en la EPN",
-				avatar: "/testimonios/daniela.webp"
+				avatar: "/testimonios/daniela.webp",
 			},
 			{
 				quote: "El nivel académico de Hackmaster es otra cosa. Con sus clases avanzadas y evaluaciones pude obtener 930 puntos, asegurando de inmediato mi cupo para la carrera de Medicina en la Universidad Central del Ecuador.",
 				author: "Mateo Zambrano",
 				role: "Estudiante de Medicina, UCE",
-				avatar: "/testimonios/mateo.jpg"
+				avatar: "/testimonios/mateo.jpg",
 			},
 			{
 				quote: "La metodología de estudio y el apoyo de los profesores me motivaron desde el día uno. Superé los 900 puntos y gracias a ello fui admitida en la Universidad de Cuenca. ¡Excelente preparación!",
 				author: "Sofía Arévalo",
 				role: "Aceptada en la U. de Cuenca",
-				avatar: "/testimonios/sofia.png"
+				avatar: "/testimonios/sofia.png",
 			},
 			{
 				quote: "Pensé que el proceso de ingreso a la universidad sería mi mayor obstáculo, pero obtener más de 960 puntos fue una realidad gracias a todo su material didáctico y acompañamiento hasta el último momento.",
 				author: "Kevin Torres",
 				role: "Aceptado en la ESPOCH",
-				avatar: "/testimonios/kevin.jpg"
-			}
+				avatar: "/testimonios/kevin.jpg",
+			},
 		]}
 	/>
-
 </PageLayout>
