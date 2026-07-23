@@ -1,0 +1,53 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const phoneNumber = "593978626700"; // 0978626700 with country code +593
+const defaultMessage = encodeURIComponent("¡Hola! Me gustaría obtener más información sobre los cursos de Hack Master.");
+const waLink = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
+---
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+  {/* TikTok Button */}
+  <a 
+    href="https://www.tiktok.com/@hackmasterec"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center justify-center w-12 h-12 bg-black text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-xl focus:outline-none"
+    aria-label="Síguenos en TikTok"
+  >
+    <Icon name="tabler:brand-tiktok" size={24} />
+  </a>
+
+  {/* Facebook Button */}
+  <a 
+    href="https://www.facebook.com/profile.php?id=61575046137912"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center justify-center w-12 h-12 bg-[#1877F2] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-xl focus:outline-none"
+    aria-label="Síguenos en Facebook"
+  >
+    <Icon name="tabler:brand-facebook" size={24} />
+  </a>
+
+  {/* Instagram Button */}
+  <a 
+    href="https://www.instagram.com/hackmasterec/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center justify-center w-12 h-12 bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-xl focus:outline-none"
+    aria-label="Síguenos en Instagram"
+  >
+    <Icon name="tabler:brand-instagram" size={24} />
+  </a>
+
+  {/* WhatsApp Button */}
+  <a 
+    href={waLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#25D366]/50 mt-1"
+    aria-label="Chatear en WhatsApp"
+  >
+    <Icon name="tabler:brand-whatsapp" size={32} />
+  </a>
+</div>

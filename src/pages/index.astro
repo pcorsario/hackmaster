@@ -4,13 +4,20 @@ import Hero from "../components/Hero.astro";
 import PostList from "../components/PostList.astro";
 import Numbers from "../components/Numbers.astro";
 import Values from "../components/Values.astro";
+import Modules from "../components/Modules.astro";
 import Sponsors from "../components/Sponsors.astro";
 import Testimonials from "../components/Testimonials.astro";
+import BannerPopup from "../components/BannerPopup.astro";
 import { getSite } from "../utils/consts";
+import imgAshley from "../assets/testimonios/Ashley Suarez.png";
+import imgCristina from "../assets/testimonios/CristinaMorocho.png";
+import imgEmily from "../assets/testimonios/Emily.png";
+import imgJohady from "../assets/testimonios/Johady Zambrano.png";
 const site = await getSite();
 ---
 
 <PageLayout title={site.title}>
+	<BannerPopup />
 	<Hero
 		eyebrow="Bienvenido a Hackmaster"
 		title={site.description || "Prepárate para la Universidad"}
@@ -55,6 +62,8 @@ const site = await getSite();
 			},
 		]}
 	/>
+
+	<Modules />
 
 	<Values
 		eyebrow="¡En Hackmaster, te ofrecemos un paquete completo para asegurar tu ingreso a la universidad!"
@@ -102,32 +111,28 @@ const site = await getSite();
 	<PostList heading="Blog" limit={4} viewAllHref="/blog" />
 
 	<Testimonials
-		eyebrow="Testimonios"
-		title="Lo que nuestros estudiantes dicen"
+		eyebrow="HACK MASTER PREPARACIÓN UNIVERSITARIA ESPECIALIZADA"
+		title="TESTIMONIOS"
 		testimonials={[
 			{
-				quote: "¡Nunca pensé que alcanzaría los 950 puntos en el examen de admisión! Gracias a los simuladores idénticos a las pruebas reales y la asesoría de Hackmaster, logré ingresar a la Escuela Politécnica Nacional en mi primer intento.",
-				author: "Daniela Cortez",
-				role: "Aceptada en la EPN",
-				avatar: "/testimonios/daniela.webp",
+				quote: "¡Logré el puntaje necesario para ingresar a la carrera de mis sueños gracias a la preparación intensiva de Hack Master!",
+				author: "Ashley Suarez",
+				avatar: imgAshley.src,
 			},
 			{
-				quote: "El nivel académico de Hackmaster es otra cosa. Con sus clases avanzadas y evaluaciones pude obtener 930 puntos, asegurando de inmediato mi cupo para la carrera de Medicina en la Universidad Central del Ecuador.",
-				author: "Mateo Zambrano",
-				role: "Estudiante de Medicina, UCE",
-				avatar: "/testimonios/mateo.jpg",
+				quote: "El acompañamiento y los simuladores fueron clave para perderle el miedo al examen. ¡Ya estoy en la universidad!",
+				author: "Cristina Morocho",
+				avatar: imgCristina.src,
 			},
 			{
-				quote: "La metodología de estudio y el apoyo de los profesores me motivaron desde el día uno. Superé los 900 puntos y gracias a ello fui admitida en la Universidad de Cuenca. ¡Excelente preparación!",
-				author: "Sofía Arévalo",
-				role: "Aceptada en la U. de Cuenca",
-				avatar: "/testimonios/sofia.png",
+				quote: "Gracias a los docentes altamente capacitados, pude nivelarme rápidamente y obtener un puntaje excelente.",
+				author: "Emily",
+				avatar: imgEmily.src,
 			},
 			{
-				quote: "Pensé que el proceso de ingreso a la universidad sería mi mayor obstáculo, pero obtener más de 960 puntos fue una realidad gracias a todo su material didáctico y acompañamiento hasta el último momento.",
-				author: "Kevin Torres",
-				role: "Aceptado en la ESPOCH",
-				avatar: "/testimonios/kevin.jpg",
+				quote: "Nunca me sentí sola durante el proceso. El apoyo constante me dio la seguridad para triunfar en la prueba.",
+				author: "Johady Zambrano",
+				avatar: imgJohady.src,
 			},
 		]}
 	/>

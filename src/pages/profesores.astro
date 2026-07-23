@@ -1,0 +1,84 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { getSite } from "../utils/consts";
+
+const site = await getSite();
+---
+
+<PageLayout title={`Profesores - ${site.title}`}>
+  <section class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+    <div class="text-center max-w-4xl mx-auto mb-16">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black uppercase text-ink mb-6" style="color: #11bae8;">
+        DOCENTES
+      </h1>
+      <p class="text-lg md:text-xl text-muted leading-relaxed">
+        En Hack Master Preuniversitario contamos con profesionales altamente capacitados y con amplia experiencia en la preparación para el ingreso a la universidad. Nuestro equipo no solo enseña, sino que guía y acompaña a cada estudiante en todo su proceso.
+      </p>
+    </div>
+
+    <div class="grid gap-12 md:grid-cols-2">
+      <!-- Damián Rodríguez -->
+      <div class="bg-surface border border-border rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+        <div class="aspect-square bg-muted/10 relative overflow-hidden">
+          <img 
+            src="/fundadores/damian.png" 
+            alt="Damián Rodríguez" 
+            class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 ease-in-out" 
+          />
+        </div>
+        <div class="p-8 md:p-10 flex-1 flex flex-col">
+          <h2 class="text-3xl font-bold text-ink mb-2">Damián Rodríguez</h2>
+          <p class="text-[#11bae8] font-bold text-lg mb-8 uppercase tracking-wide">Socio fundador de Hack Master</p>
+          
+          <ul class="space-y-3 text-muted mb-8">
+            <li class="flex items-start">
+              <span class="mr-2 text-[#11bae8]">•</span>
+              <span>Ingeniero en Tecnologías de la Información y Comunicación</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2 text-[#11bae8]">•</span>
+              <span>Licenciado en Ciencias de la Educación</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-2 text-[#11bae8]">•</span>
+              <span>Maestrante en Investigación Aplicada a la Estadística</span>
+            </li>
+          </ul>
+
+          <div class="bg-muted/5 p-6 rounded-2xl mb-8">
+            <p class="text-ink mb-4 font-semibold">Cuenta con más de 10 años de experiencia en preparación preuniversitaria, especializado en:</p>
+            <ul class="grid grid-cols-2 gap-2 text-muted">
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[#11bae8]"></div> Razonamiento numérico</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[#11bae8]"></div> Razonamiento lógico</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[#11bae8]"></div> Matemáticas</li>
+              <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[#11bae8]"></div> Razonamiento abstracto</li>
+            </ul>
+          </div>
+
+          <p class="text-muted leading-relaxed mt-auto">
+            Su enfoque se basa en estrategias prácticas, resolución rápida de ejercicios tipo examen y entrenamiento intensivo con simuladores reales, permitiendo a los estudiantes mejorar su rendimiento y confianza.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tatiana -->
+      <div class="bg-surface border border-border rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+        <div class="aspect-square bg-muted/10 relative overflow-hidden">
+          <img 
+            src="/fundadores/tatiana.png" 
+            alt="Tatiana" 
+            class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 ease-in-out" 
+          />
+        </div>
+        <div class="p-8 md:p-10 flex-1 flex flex-col">
+          <h2 class="text-3xl font-bold text-ink mb-2">Tatiana</h2>
+          <p class="text-[#11bae8] font-bold text-lg mb-8 uppercase tracking-wide">Socia fundadora de Hack Master</p>
+          
+          <p class="text-muted leading-relaxed mt-auto">
+            Profesional altamente capacitada y con amplia vocación para guiar a los estudiantes en su proceso de aprendizaje y admisión a la universidad. Su experiencia y metodología permiten un acompañamiento integral durante toda la preparación académica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

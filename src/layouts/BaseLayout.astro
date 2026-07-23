@@ -1,18 +1,23 @@
 ---
-import type { ImageMetadata } from 'astro';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { getSite } from '../utils/consts';
+import type { ImageMetadata } from "astro";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { getSite } from "../utils/consts";
 
 interface Props {
-	title?: string;
-	description?: string;
-	image?: ImageMetadata;
+    title?: string;
+    description?: string;
+    image?: ImageMetadata;
 }
 
 const site = await getSite();
-const { title = site.title, description = site.description, image } = Astro.props;
+const {
+    title = site.title,
+    description = site.description,
+    image,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -21,11 +26,93 @@ const { title = site.title, description = site.description, image } = Astro.prop
         <BaseHead title={title} description={description} image={image} />
     </head>
     <body>
+        <!-- Global Background SVG Pattern -->
+        <svg
+            class="fixed inset-0 w-screen h-screen pointer-events-none -z-10 opacity-5 mix-blend-multiply"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <defs>
+                <pattern
+                    id="hackmaster-pattern"
+                    x="0"
+                    y="0"
+                    width="160"
+                    height="160"
+                    patternUnits="userSpaceOnUse"
+                >
+                    <!-- Primary Color Paths -->
+                    <g
+                        fill="#1b1e4c"
+                        stroke="#1b1e4c"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M20 30 h30 v20 h-15" fill="none"></path>
+                        <circle cx="20" cy="30" r="2.5"></circle>
+                        <circle cx="35" cy="50" r="2.5"></circle>
+                        <path d="M120 15 v30 h25" fill="none"></path>
+                        <circle cx="120" cy="15" r="2.5"></circle>
+                        <path d="M50 130 h30 v-25 h20" fill="none"></path>
+                        <circle cx="50" cy="130" r="2.5"></circle>
+                        <circle cx="100" cy="105" r="2.5"></circle>
+                        <path d="M140 80 h-25 v45" fill="none"></path>
+                        <circle cx="140" cy="80" r="2.5"></circle>
+                        <text
+                            x="35"
+                            y="100"
+                            font-family="system-ui, sans-serif"
+                            font-weight="900"
+                            font-size="28"
+                            fill="#1b1e4c"
+                            stroke="none">H</text
+                        >
+                        <text
+                            x="110"
+                            y="55"
+                            font-family="system-ui, sans-serif"
+                            font-weight="900"
+                            font-size="28"
+                            fill="#1b1e4c"
+                            stroke="none">M</text
+                        >
+                        <path
+                            d="M70 50 v12 c0 12 -12 18 -15 22 c-3 -4 -15 -10 -15 -22 v-12 h30 z"
+                            fill="none"></path>
+                        <circle cx="55" cy="60" r="3" fill="none"></circle>
+                        <path
+                            d="M53.5 62 l1.5 5 l1.5 -5 z"
+                            fill="#1b1e4c"
+                            stroke="none"></path>
+                    </g>
+                    <!-- Secondary Color Paths -->
+                    <g
+                        fill="#11bae8"
+                        stroke="#11bae8"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M25 110 v25 h-15" fill="none"></path>
+                        <circle cx="25" cy="110" r="2.5"></circle>
+                        <path d="M130 140 h20" fill="none"></path>
+                        <circle cx="150" cy="140" r="2.5"></circle>
+                        <circle cx="130" cy="140" r="2.5"></circle>
+                        <path d="M85 20 h-15 v-10" fill="none"></path>
+                        <circle cx="85" cy="20" r="2.5"></circle>
+                    </g>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hackmaster-pattern)"
+            ></rect>
+        </svg>
+
         <Header />
         <main class="content-shell">
             <slot />
         </main>
         <Footer />
+        <WhatsAppButton />
     </body>
 </html>
 

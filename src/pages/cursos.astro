@@ -1,0 +1,117 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { getSite } from "../utils/consts";
+
+const site = await getSite();
+
+const courses = [
+  {
+    title: "1. Preuniversitario",
+    description: "Preparación completa para el ingreso a la universidad, con simuladores, clases en vivo y seguimiento personalizado enfocado en cada universidad.",
+    image: "/cursos/preuniversitario.png",
+    rotation: "-rotate-2"
+  },
+  {
+    title: "2. Vacacional de Matemáticas",
+    description: "Curso intensivo para reforzar bases matemáticas, ideal para estudiantes de colegio o quienes necesitan nivelarse antes de rendir un examen.",
+    image: "/cursos/matamaticas.png",
+    rotation: "rotate-2"
+  },
+  {
+    title: "3. Evaluación de Desempeño Docente",
+    description: "Capacitación especializada para docentes que buscan mejorar su desempeño en evaluaciones oficiales y procesos de recategorización.",
+    image: "/cursos/evaluacion docente.jpeg",
+    rotation: "-rotate-1"
+  },
+  {
+    title: "4. Clases Personalizadas",
+    description: "Refuerzo académico adaptado a cada estudiante en: Educación básica, Educación básica superior y Bachillerato.",
+    image: "/cursos/clases personalziadas.jpeg",
+    rotation: "rotate-3"
+  },
+  {
+    title: "5. Habilidades Universitarias",
+    description: "Curso enfocado en preparar al estudiante para la vida universitaria, desarrollando competencias clave como normas APA, elaboración de ensayos, infografías, exposiciones y técnicas de estudio.",
+    image: "/cursos/habilidades.jpeg",
+    rotation: "-rotate-2"
+  }
+];
+
+// Generate 12 rings for each small notebook
+const rings = Array.from({ length: 12 });
+---
+
+<PageLayout title={`Cursos - ${site.title}`}>
+  <div class="relative py-12 md:py-20 px-4 min-h-screen flex flex-col items-center overflow-x-hidden font-sans">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 max-w-7xl w-full relative z-10">
+      {courses.map((course, index) => (
+        
+        <!-- Individual Notebook Container -->
+        <div class="w-full bg-white shadow-[0_15px_40px_rgba(0,0,0,0.12)] rounded-r-3xl rounded-l-sm flex relative z-10 
+          before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:bg-[linear-gradient(transparent_95%,rgba(0,0,0,0.04)_95%)] before:bg-[length:100%_35px] before:z-0 min-h-[600px] hover:-translate-y-2 transition-transform duration-500">
+          
+          <!-- Spiral Column (Left Edge) -->
+          <div class="w-10 sm:w-12 flex-shrink-0 border-r border-gray-200 bg-[#f8f9fa] relative z-20 flex flex-col justify-evenly py-6 shadow-[2px_0_5px_rgba(0,0,0,0.02)]" aria-hidden="true">
+            {rings.map((_) => (
+              <div class="relative w-full h-8 flex justify-center items-center">
+                <!-- Paper hole -->
+                <div class="absolute right-1.5 sm:right-2 w-4 h-4 rounded-full bg-gray-100 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.2)]"></div>
+                <!-- Metal ring (3D effect) -->
+                <div class="absolute -left-2.5 sm:-left-3 w-10 h-3 rounded-full border-[2px] border-gray-400/50 bg-gradient-to-b from-gray-300 via-gray-100 to-gray-400 shadow-sm rotate-[-12deg]"></div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Notebook Page Content -->
+          <div class="flex-1 px-6 sm:px-10 py-10 relative z-10 flex flex-col">
+            
+            {index === 0 && (
+              <!-- Graphics simulating cover design only on the first notebook -->
+              <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#11bae8] to-transparent opacity-[0.05] rounded-bl-full pointer-events-none"></div>
+            )}
+
+            {index === 0 && (
+              <div class="text-center mb-10 relative z-10">
+                <h1 class="text-4xl md:text-5xl font-black uppercase text-[#1b1e4c] tracking-tighter mb-1" style="text-shadow: 1px 1px 0px rgba(0,0,0,0.05);">Cursos</h1>
+                <h2 class="text-xs md:text-sm text-[#11bae8] font-bold uppercase tracking-[0.3em]">Hack Master</h2>
+              </div>
+            )}
+
+            <!-- Content text (handwritten/printed style) -->
+            <div class={`w-full text-left relative z-10 flex-grow-0 ${index !== 0 ? 'mt-4' : ''}`}>
+              <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 tracking-tight">{course.title}</h3>
+              <p class="text-sm sm:text-base text-gray-700 leading-relaxed font-medium max-w-lg mb-6">
+                {course.description}
+              </p>
+              <a href="#" class="inline-block border-2 border-[#1b1e4c] text-[#1b1e4c] px-5 py-1.5 rounded-full font-bold text-sm hover:bg-[#1b1e4c] hover:text-white transition-colors duration-300 shadow-sm">Conoce más</a>
+            </div>
+
+            <!-- Photo (Taped Polaroid style) -->
+            <div class={`relative w-full max-w-sm mx-auto mt-12 mb-4 ${course.rotation} transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:rotate-0 z-10`}>
+              
+              <!-- Tape -->
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-white/50 backdrop-blur-sm rotate-[-4deg] shadow-sm z-30 opacity-80 mix-blend-screen" style="border: 1px solid rgba(255,255,255,0.8);"></div>
+              
+              <div class="bg-white p-3 sm:p-4 pb-12 sm:pb-14 shadow-[0_10px_25px_rgba(0,0,0,0.15)] border border-gray-100 relative">
+                <img 
+                  src={course.image} 
+                  alt={course.title} 
+                  class="w-full h-auto object-cover object-center bg-gray-50 border border-gray-200 aspect-[4/3]"
+                  loading="lazy"
+                />
+                <!-- Hack Master Stamp -->
+                <div class="absolute bottom-2 right-2 w-12 h-12 rounded-full border-[2px] border-[#11bae8]/80 text-[#11bae8]/80 flex flex-col items-center justify-center font-black rotate-[15deg] opacity-90 shadow-sm mix-blend-multiply bg-white/60 backdrop-blur-sm">
+                  <span class="text-[9px] leading-none">HACK</span>
+                  <span class="text-[9px] leading-none">MASTER</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</PageLayout>

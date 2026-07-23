@@ -1,18 +1,18 @@
 ---
 interface Testimonial {
-	quote: string;
-	author: string;
-	role?: string;
-	avatar?: string;
+  quote: string;
+  author: string;
+  role?: string;
+  avatar?: string;
 }
 
-import { getCollection } from 'astro:content';
-import { Icon } from 'astro-icon/components';
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 
 interface Props {
-	eyebrow?: string;
-	title?: string;
-	testimonials?: Testimonial[];
+  eyebrow?: string;
+  title?: string;
+  testimonials?: Testimonial[];
 }
 
 const { eyebrow, title, testimonials } = Astro.props;
@@ -20,101 +20,120 @@ const { eyebrow, title, testimonials } = Astro.props;
 let items: Testimonial[] = testimonials ?? [];
 
 if (!testimonials) {
-	const entries = await getCollection('testimonials');
-	items = entries.length === 1 && Array.isArray(entries[0].data)
-		? entries[0].data as Testimonial[]
-		: entries.map((e) => e.data as Testimonial);
+  const entries = await getCollection("testimonials");
+  items =
+    entries.length === 1 && Array.isArray(entries[0].data)
+      ? (entries[0].data as Testimonial[])
+      : entries.map((e) => e.data as Testimonial);
 }
 ---
 
-<section class="space-y-6 testimonial-section">
-  <header class="space-y-2 max-w-2xl">
-    {eyebrow && <p class="eyebrow m-0">{eyebrow}</p>}
-    {title && <h2 class="text-3xl sm:text-4xl font-semibold leading-tight text-ink m-0">{title}</h2>}
-  </header>
+<section class="py-16 md:py-24 text-center">
+  <div class="max-w-7xl mx-auto px-4">
+    <header class="mb-12">
+      {
+        title && (
+          <h2 class="text-4xl md:text-5xl font-black uppercase text-[#34077D] tracking-tighter mb-4">
+            {title}
+          </h2>
+        )
+      }
+      {
+        eyebrow && (
+          <p class="text-lg md:text-xl text-gray-700 font-medium">{eyebrow}</p>
+        )
+      }
+    </header>
 
-  <div class="slider w-full flex flex-col justify-center items-center relative overflow-hidden min-h-[440px] md:min-h-[380px]">
-    {items.map((t, i) => (
-      <article class="slide absolute inset-0 flex items-center justify-center px-4" data-index={i}>
-        <div class="w-full max-w-[850px] rounded-3xl border border-border bg-surface p-6 md:p-8 shadow-sm relative flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
-          <Icon name="tabler:quote" size={48} class="text-border absolute top-6 right-8 opacity-30 z-0" />
-          <div class="flex-1 relative z-10 w-full text-left">
-            <blockquote class="not-italic text-lg md:text-xl leading-relaxed mb-6 text-ink m-0">"{t.quote}"</blockquote>
-            <div>
-              <p class="text-lg font-bold text-ink m-0">{t.author}</p>
-              {t.role && <p class="text-sm font-semibold text-muted m-0 mt-1" style="color: #b91c1c;">{t.role}</p>}
-            </div>
-          </div>
-          {t.avatar && (
-            <div class="flex-shrink-0 w-40 h-40 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg border-4 border-[color-mix(in_oklab,currentColor_15%,transparent)] md:rotate-2 hover:rotate-0 transition-transform duration-300 relative z-10">
-              <img src={t.avatar} alt={`Foto de ${t.author}`} class="w-full h-full object-cover" />
-            </div>
-          )}
-        </div>
-      </article>
-    ))}
-  </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+      {
+        items.map((t, i) => (
+          <article class="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl bg-black group transform transition-transform duration-300 hover:-translate-y-2">
+            {t.avatar && (
+              <img
+                src={t.avatar}
+                alt={`Testimonio de ${t.author}`}
+                class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            )}
 
-  <div class="w-full flex justify-center items-center gap-4">
-    <button data-dir="-1" aria-label="Anterior" class="slider-nav group rounded-full border border-border bg-surface p-2.5 shadow-sm transition-all duration-200 hover:border-ink/25 hover:shadow-md active:scale-95 cursor-pointer">
-      <Icon name="tabler:chevron-left" size={18} class="transition-transform duration-200 group-hover:-translate-x-0.5" />
-    </button>
-    <div class="flex items-center gap-1.5">
-      {items.map((_, i) => (
-        <button class="relative p-3 cursor-pointer group" data-dot={i} aria-label={`Ir a testimonio ${i + 1}`}>
-          <span class={`slider-dot block h-1.5 rounded-full transition-all duration-300 ${i === 0 ? 'w-5 bg-ink' : 'w-1.5 bg-ink/20'}`} />
-        </button>
-      ))}
+            {/* Top overlay (Logo / Branding) */}
+            <div class="absolute top-4 left-0 w-full flex justify-center z-20">
+              <div class="bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-md flex items-center gap-2">
+                <img src="/logohm1.png" alt="Hack Master" class="h-6 w-auto" />
+                <span class="text-xs font-bold text-[#1b1e4c] tracking-tight uppercase">
+                  Hack Master
+                </span>
+              </div>
+            </div>
+
+            {/* Social UI Overlay */}
+            <div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10">
+              {/* Right sidebar icons */}
+              <div class="absolute right-4 bottom-28 flex flex-col gap-6 items-center">
+                <div class="flex flex-col items-center gap-1 group/icon cursor-pointer">
+                  <Icon
+                    name="tabler:heart-filled"
+                    size={28}
+                    class="text-white drop-shadow-md group-hover/icon:text-red-500 transition-colors"
+                  />
+                  <span class="text-white text-xs font-bold drop-shadow-md">
+                    {(Math.random() * 100 + 50).toFixed(0)}
+                  </span>
+                </div>
+                <div class="flex flex-col items-center gap-1 group/icon cursor-pointer">
+                  <Icon
+                    name="tabler:message-circle"
+                    size={28}
+                    class="text-white drop-shadow-md"
+                  />
+                  <span class="text-white text-xs font-bold drop-shadow-md">
+                    {(Math.random() * 20 + 5).toFixed(0)}
+                  </span>
+                </div>
+                <div class="flex flex-col items-center gap-1 group/icon cursor-pointer">
+                  <Icon
+                    name="tabler:send"
+                    size={28}
+                    class="text-white drop-shadow-md"
+                  />
+                </div>
+              </div>
+
+              {/* Bottom Content */}
+              <div class="w-[85%] text-left text-white drop-shadow-lg mb-4">
+                <h3 class="text-lg font-bold mb-1 flex items-center gap-2">
+                  {t.author}
+                  <Icon
+                    name="tabler:rosette-discount-check-filled"
+                    size={18}
+                    class="text-blue-400"
+                  />
+                </h3>
+                <p class="text-sm line-clamp-2 leading-tight opacity-90">
+                  {t.quote}
+                </p>
+              </div>
+
+              {/* Progress Bar & Play Icon */}
+              <div class="flex items-center gap-2 w-full mt-2">
+                <Icon
+                  name="tabler:player-play-filled"
+                  size={12}
+                  class="text-white"
+                />
+                <div class="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
+                  <div
+                    class="h-full bg-white/90 rounded-full"
+                    style={`width: ${(Math.random() * 40 + 30).toFixed(0)}%`}
+                  />
+                </div>
+                <span class="text-[10px] text-white font-medium">0:00</span>
+              </div>
+            </div>
+          </article>
+        ))
+      }
     </div>
-    <button data-dir="1" aria-label="Siguiente" class="slider-nav group rounded-full border border-border bg-surface p-2.5 shadow-sm transition-all duration-200 hover:border-ink/25 hover:shadow-md active:scale-95 cursor-pointer">
-      <Icon name="tabler:chevron-right" size={18} class="transition-transform duration-200 group-hover:translate-x-0.5" />
-    </button>
   </div>
 </section>
-
-<script>
-import { gsap } from 'gsap';
-
-const section = document.querySelector('.testimonial-section');
-if (section) {
-  const slides = gsap.utils.toArray<HTMLElement>('.slide', section);
-  const dots = section.querySelectorAll<HTMLElement>('.slider-dot') as NodeListOf<HTMLElement>;
-  const total = slides.length;
-  let current = 0;
-  let tweening = false;
-
-  // Posición inicial
-  slides.forEach((s, i) => i > 0 && gsap.set(s, { xPercent: 100 }));
-
-  const goTo = (next: number) => {
-    if (tweening || next === current) return;
-    tweening = true;
-    const dir = next > current ? 1 : -1;
-
-    gsap.set(slides[next], { xPercent: dir * 100 });
-    gsap.to(slides[current], { xPercent: dir * -100, onComplete: () => (tweening = false) });
-    gsap.to(slides[next], { xPercent: 0 });
-
-    dots[current].className = 'slider-dot block h-1.5 rounded-full transition-all duration-300 w-1.5 bg-ink/20';
-    dots[next].className = 'slider-dot block h-1.5 rounded-full transition-all duration-300 w-5 bg-ink';
-
-    current = next;
-  };
-
-  const advance = (dir: number) => goTo((current + dir + total) % total);
-
-  // Navegación
-  section.querySelectorAll<HTMLElement>('.slider-nav').forEach((btn) =>
-    btn.addEventListener('click', () => advance(Number(btn.dataset.dir)))
-  );
-
-  section.querySelectorAll<HTMLElement>('[data-dot]').forEach((btn) =>
-    btn.addEventListener('click', () => goTo(Number(btn.dataset.dot)))
-  );
-
-  // Auto-play con pausa en hover
-  let timer = setInterval(() => advance(1), 10000);
-  section.addEventListener('mouseenter', () => clearInterval(timer));
-  section.addEventListener('mouseleave', () => (timer = setInterval(() => advance(1), 10000)));
-}
-</script>

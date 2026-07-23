@@ -1,0 +1,62 @@
+---
+// BannerPopup.astro
+---
+
+<div id="welcome-banner-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+  <div id="welcome-banner-content" class="relative max-w-[90%] max-h-[90%] transform scale-95 transition-transform duration-300">
+    <button id="welcome-banner-close" class="absolute -top-4 -right-4 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-200 transition-colors z-10 font-bold text-xl cursor-pointer" aria-label="Cerrar">
+      &times;
+    </button>
+    <video src="/videos/tiktok.mp4" autoplay loop muted playsinline controls class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl bg-black"></video>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('welcome-banner-overlay');
+    const content = document.getElementById('welcome-banner-content');
+    const closeBtn = document.getElementById('welcome-banner-close');
+
+    // Move to body to prevent any parent container from clipping the fixed position
+    if (overlay && document.body) {
+      document.body.appendChild(overlay);
+    }
+
+    // Check if we've already shown the banner in this session to avoid annoying the user on every navigation.
+    // We'll use sessionStorage.
+    const hasSeenBanner = sessionStorage.getItem('hasSeenWelcomeBanner');
+
+    if (overlay && content && closeBtn && !hasSeenBanner) {
+      // Show the banner
+      setTimeout(() => {
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+        sessionStorage.setItem('hasSeenWelcomeBanner', 'true');
+      }, 500); // slight delay for a nice effect
+
+      const closeBanner = () => {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+      };
+
+      // Close on button click
+      closeBtn.addEventListener('click', closeBanner);
+
+      // Close on click outside the image
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          closeBanner();
+        }
+      });
+      
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !overlay.classList.contains('pointer-events-none')) {
+          closeBanner();
+        }
+      });
+    }
+  });
+</script>
